@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;1000&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.welcome-section {
+  flex: 1;
+  background: radial-gradient(
+    circle at 17% 28%,
+    rgba(158, 179, 196, 1) 17%,
+    rgba(122, 139, 155, 1) 78%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-section img {
+  max-width: 80%;
+  height: auto;
+}
+
+.login-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #333;
+}
+
+.login-form {
+  width: 50%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+.loginValue {
+  border-radius: 0.5rem;
+  color: #000000;
+}
+.loginValue::placeholder {
+  color: #cacaca;
+}
+.form-group a {
+  color: #000000;
+}
+label {
+  display: block;
+  font-size: 1em;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+p {
+  font-size: 0.9em;
+  color: #333;
+  margin-top: 10px;
+}
+
+a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* EROR POPUP */
+.error-popup {
+  position: fixed;
+  top: -100px; /* Menghilangkan pop-up di luar tampilan */
+  right: -300px; /* Menghilangkan pop-up di luar tampilan */
+  background-color: #ff6464; /* Warna merah belakang pop-up */
+  color: #fff; /* Warna teks pop-up */
+  padding: 15px; /* Ruang dalam pop-up */
+  border-radius: 5px; /* Sudut melengkung */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Efek bayangan */
+  transition: top 0.5s ease-in-out, right 0.5s ease-in-out; /* Efek animasi muncul/hilang */
+  z-index: 999; /* Menempatkan pop-up di atas elemen lain */
+}
+
+.progress-bar {
+  height: 5px;
+  width: 100%;
+  background-color: #fff; /* Warna latar belakang progress bar */
+  margin-bottom: 10px;
+}
+/* END EROR */
+.success-popup {
+  position: fixed;
+  top: -100px; /* Menghilangkan pop-up di luar tampilan */
+  right: -300px; /* Menghilangkan pop-up di luar tampilan */
+  background-color: #4caf50; /* Warna hijau belakang pop-up*/
+  color: white; /* Warna teks sesuai kebutuhan */
+  padding: 15px; /* Ruang dalam pop-up */
+  border-radius: 5px; /* Sudut melengkung */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Efek bayangan */
+  transition: top 0.5s ease-in-out, right 0.5s ease-in-out; /* Efek animasi muncul/hilang */
+  z-index: 999; /* Menempatkan pop-up di atas elemen lain */
+}

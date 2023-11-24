@@ -1,13 +1,11 @@
 <?php
-session_start(); // Start the session
+session_start();
 
-// Unset all session variables
+// Hapus sesi
 $_SESSION = array();
-
-// Destroy the session
 session_destroy();
 
-// Redirect to the login page or any other appropriate page after logout
+// Redirect ke halaman login
 header("Location: login.php");
 exit();
 ?>

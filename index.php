@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes App</title>
+    <link rel="icon" type="image/png" href="image/favicon.png" />
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -69,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 $noNotes = false;
                 echo '
                 <div class="cardBody">
-                    <h5>' . $fetch["title"] . '</h5>
-                    <p>' . $fetch["description"] . '</p>
+                    <h5>' . htmlspecialchars($fetch["title"])  . '</h5>
+                    <p>' . htmlspecialchars($fetch["description"])  . '</p>
                     <button type="button" class="btn edit" onclick="openModal()" id=' . $fetch["sno"] . '>Edit</button>
                     <a href="./delete.php?id=' . $fetch["sno"] . '" class="btn delete">Delete</a>
                 </div>';
@@ -121,7 +122,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     };
     function searchNotes() {
         var searchText = document.getElementById("search").value;
-        // You can customize this URL based on your search implementation
         window.location.href = "search.php?query=" + searchText;
     }
 
