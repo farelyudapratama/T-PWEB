@@ -108,8 +108,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="container">
         <div class="login-section">
-            <p class="subtitle">SIGN UP</p>
             <form method="POST" class="login-form">
+                <p class="subtitle">SIGN UP</p>
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" class="loginValue" name="username"
@@ -122,8 +122,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <a class="toggle-icon" onclick="togglePasswordVisibility()">See password</a>
                 </div>
                 <button type="submit">Sign Up</button>
+                <p>Already have an account ? <a href="login.php">Login here</a></p>
             </form>
-            <p>Already have an account ? <a href="login.php">Login here</a></p>
         </div>
         <div class="welcome-section">
             <img src="image/banner.jpg" alt="Welcome Image">

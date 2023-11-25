@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include "./db.php";
+include "./db.php"; //koneksi database di db.php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -98,8 +98,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <img src="image/banner.jpg" alt="Welcome Image">
         </div>
         <div class="login-section">
-            <p class="subtitle">LOGIN</p>
             <form method="POST" class="login-form">
+                <p class="subtitle">LOGIN</p>
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" class="loginValue" name="username"
@@ -112,8 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <a class="toggle-icon" onclick="togglePasswordVisibility()">See password</a>
                 </div>
                 <button type="submit">Login</button>
+                <p>Don't have an account? <a href="signup.php">Sign up here</a></p>
             </form>
-            <p>Don't have an account? <a href="signup.php">Sign up here</a></p>
         </div>
     </div>
     <script>
