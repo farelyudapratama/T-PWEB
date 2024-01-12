@@ -1,27 +1,26 @@
 <?php
-session_start();
+session_start(); //memulai sesi
 
 include "./db.php"; //koneksi database di db.php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { //memeriksa jika requestnya adalah POST maka ini dijalankan
+    $username = $_POST['username']; // menyimpan username dari form hmtl ke variabel username
+    $password = $_POST['password']; //menyimpan password dari form hmtl ke variabel password
 
     // Ambil data user dari database
     $sql = "SELECT * FROM `users` WHERE `username` = '$username'";
     $res = mysqli_query($con, $sql);
 
-    if ($res && $row = mysqli_fetch_assoc($res)) {
+    if ($res && $row = mysqli_fetch_assoc($res)) { //  memeriksa apakah ada user ada di database jika iya maka
         // verifikasi password dengan hash password yang tersimpan
-        if (password_verify($password, $row['password'])) {
+        if (password_verify($password, $row['password'])) { //jika passwordnya sama maka user_id akan disimpan di variabel SESSION serta melempar halaman ke index.php
             $_SESSION['user_id'] = $row['id'];
             header("Location: index.php");
             exit();
-        } else {
+        } else { // jika password salah maka akan muncul invalid password
             $validation = "Invalid password";
-
         }
-    } else {
+    } else { // jika user tidak ditemukan maka akan muncul user not found
         $validation = "User not found";
     }
 }
@@ -40,10 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <?php if (isset($validation) && $validation): ?>
+    <?php if (isset($validation) && $validation): ?> <!--Jika ada variabel validation maka script dibawahnya ini akan dijalankan-->
         <script>
-            showNotification('<?php echo $validation; ?>');
-            function showNotification(message) {
+            showNotification('<?php echo $validation; ?>'); // memanggil fungsi showNotification dan mengirimkan pesan notifikasi ke dalamnya. Pesan notifikasi ini berasal dari nilai variabel PHP $validation.
+
+            function showNotification(message) { //Ini fungsi untuk membuat notifikasi
                 console.log("Showing error message:", message);
 
                 // Buat elemen div untuk pop-up
@@ -54,31 +54,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 var progressBar = document.createElement("div");
                 progressBar.className = "progress-bar";
 
-                // buat progress bar ke dalam pop-up
+                // Menambahkan progress bar ke dalam pop-up
                 popup.appendChild(progressBar);
 
                 // Buat elemen span untuk pesan
                 var messageSpan = document.createElement("span");
                 messageSpan.textContent = message;
 
-                // Tambahkan pesan ke dalam pop-up
+                // Menambahkan pesan ke dalam pop-up
                 popup.appendChild(messageSpan);
 
-                // Tambahkan pop-up ke dalam body
+                // Menambahkan pop-up ke dalam body
                 document.body.appendChild(popup);
 
-                // Animasi muncul dari atas samping kanan
+                // Animasi munculin notif
                 setTimeout(function () {
                     popup.style.top = "20px";
                     popup.style.right = "20px";
                 }, 10);
 
-                // Atur timer untuk menghilangkan pop-up setelah beberapa detik
+                // Mengilangkan notif dengan timer 5 detik
                 var timer = setTimeout(function () {
                     popup.style.top = "-100px"; // Menghilangkan pop-up dari tampilan geser ke atas 100px
-                }, 5000); // 5000 milidetik (5 detik) - sesuaikan sesuai kebutuhan
+                }, 5000);
 
-                // Atur timer untuk mengupdate progress bar setiap 50 milidetik (sesuaikan sesuai kebutuhan)
+                // Intinya ini untuk mengupdate progress barnya agar seolah seperti dari penuh ke habis sebelum notifnya ilang
                 var updateInterval = 50;
                 var progressBarWidth = 100;
                 var progressBarUpdate = setInterval(function () {
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="password">Password</label>
                     <input type="password" id="password" class="loginValue" name="password"
                         placeholder="Enter your password...">
-                    <a class="toggle-icon" onclick="togglePasswordVisibility()">See password</a>
+                    <a class="toggle" onclick="togglePasswordVisibility()">See password</a>
                 </div>
                 <button type="submit">Login</button>
                 <p>Don't have an account? <a href="signup.php">Sign up here</a></p>
@@ -117,14 +117,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
     <script>
+        // Script ini untuk tombol menampilkan dan menyembunyikan password
         function togglePasswordVisibility() {
             var passwordInput = document.getElementById("password");
 
-            // Ubah tipe input antara password dan text
+            // mengubah tipe input dari password menjadi text agar terlihat dan sebaliknya
             passwordInput.type = (passwordInput.type === "password") ? "text" : "password";
 
             // Ganti teks pada ikon berdasarkan tipe input
-            var toggleIcon = document.querySelector(".toggle-icon");
+            var toggleIcon = document.querySelector(".toggle");
             toggleIcon.textContent = (passwordInput.type === "password") ? "See password" : "Hide password";
         }
     </script>

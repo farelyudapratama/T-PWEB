@@ -1,25 +1,25 @@
 <?php
-session_start();
-include "./db.php";
-$res = false;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+session_start(); //memulai sesi
+include "./db.php"; //koneksi database di db.php
+$res = false; // variabel untuk menyimpan nilai true atau false (Diset false diawal)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {//memeriksa jika requestnya adalah POST maka ini dijalankan
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (empty($username) || empty($password)) {
+    if (empty($username) || empty($password)) { // ngecek jika formulir belum diisi salah satu
         $validation = "Please enter both username and password.";
-    } else {
-        // Check if the username already exists
+    } else { // jika udeh diisi
+        // Mengecek adakah nama didatabase
         $checkUsernameQuery = "SELECT * FROM `users` WHERE `username` = '$username'";
         $checkUsernameResult = mysqli_query($con, $checkUsernameQuery);
 
-        if (mysqli_num_rows($checkUsernameResult) > 0) {
+        if (mysqli_num_rows($checkUsernameResult) > 0) { // Jika ada maka tidak boleh sama
             $validation = "Username already exists. Please choose a different username.";
-        } else {
-            // Hash the password for security
+        } else { // jika tidak ada yang sama maka
+            // password akan dihash
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            // Insert the user into the database
+            // Menambahkan user beserta password hasil hash di database
             $sql = "INSERT INTO `users` (`username`, `password`) VALUES ('$username', '$hashedPassword')";
             $res = mysqli_query($con, $sql);
 
@@ -46,15 +46,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-<?php if (isset($validation) && $validation): ?>
-    <script>
+<?php if (isset($validation) && $validation): ?> 
+    <script> // Script untuk membuat notifikasi
         showNotification('<?php echo $validation; ?>', <?php echo $res ? 'true' : 'false'; ?>);
         function showNotification(message, isSuccess) {
             console.log("Showing notification:", message);
 
             // Buat elemen div untuk pop-up
             var popup = document.createElement("div");
-            popup.className = isSuccess ? "success-popup" : "error-popup"; // Pilih kelas sesuai dengan isSuccess
+            popup.className = isSuccess ? "success-popup" : "error-popup";
 
             // Buat elemen div untuk progress bar
             var progressBar = document.createElement("div");
@@ -79,12 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 popup.style.right = "20px";
             }, 10);
 
-            // Atur timer untuk menghilangkan pop-up setelah beberapa detik
+            
             var timer = setTimeout(function () {
-                popup.style.top = "-100px"; // Menghilangkan pop-up dari tampilan geser ke atas 100px
-            }, 5000); // 5000 milidetik (5 detik) - sesuaikan sesuai kebutuhan
+                popup.style.top = "-100px"; 
+            }, 5000); 
 
-            // Atur timer untuk mengupdate progress bar setiap 50 milidetik (sesuaikan sesuai kebutuhan)
             var updateInterval = 50;
             var progressBarWidth = 100;
             var progressBarUpdate = setInterval(function () {
@@ -92,11 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 progressBarWidth -= (updateInterval / 5000) * 100;
             }, updateInterval);
 
-            // Hentikan pembaruan progress bar ketika timer habis
-            setTimeout(function () {
+            setTimeout(function () { // Ketika timer habis akan di lempar ke halaman login
                 clearInterval(progressBarUpdate);
-
-                // Redirect ke halaman login setelah popup ditampilkan jika registrasi berhasil
                 if (isSuccess) {
                     window.location.href = 'login.php';
                 }
@@ -133,14 +129,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script>
         function togglePasswordVisibility() {
             var passwordInput = document.getElementById("password");
-            // Ubah tipe input antara password dan text
             passwordInput.type = (passwordInput.type === "password") ? "text" : "password";
-            // Ganti teks pada ikon berdasarkan tipe input
             var toggleIcon = document.querySelector(".toggle-icon");
             toggleIcon.textContent = (passwordInput.type === "password") ? "See password" : "Hide password";
         }
-
-        
     </script>
 </body>
 

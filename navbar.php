@@ -20,7 +20,7 @@
         <a href="#">' . $username . '</a>
         <div class="user-dropdown" id="userDropdown">
             <a href="logout.php">Logout</a>
-            <a href="delete.php" class="userdelete">Delete Account</a>
+            <a href="deleteUser.php" class="userdelete">Delete Account</a>
         </div>
         ';
         ?>

@@ -1,12 +1,17 @@
 <?php
-include "./db.php";
+include "./db.php"; // import file db.php
 // Edit database
-if (isset($_POST["hidden"])) {
+if (isset($_POST["hidden"])) { // Jika formulir ini dikirimkan, maka isi formulir tersebut akan disimpan dalam variabel $_POST.
+  // Mengambil nilai dari input formulir edit
   $title = $_POST["editTitle"];
   $desc = $_POST["editDesc"];
   $id= $_POST["hidden"];
+
+  // Membuat query SQL untuk melakukan UPDATE pada tabel 'notes' berdasarkan id ('sno')
   $sql = "UPDATE `notes` SET `sno`='$id',`title`='$title',`description`='$desc'WHERE `sno`='$id'";
-  $res = mysqli_query($con, $sql);
+  $res = mysqli_query($con, $sql);//mengirimkan perintah SQL ke server database dan mengembalikan hasilnya.
+  
+  //Setelah perintah SQL berhasil dieksekusi, kode ini mengalihkan browser ke halaman saat ini untuk memastikan data baru tampil.
   header("Location: " . $_SERVER["PHP_SELF"]);
   exit();
 }
