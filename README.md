@@ -8,7 +8,7 @@ Keamanan belum ada, masih sebatas hashing password
 
 ## GitHub Pages
 
-Repository ini sudah dilengkapi dengan GitHub Actions untuk otomatis deploy ke GitHub Pages. Halaman landing page statis akan tersedia di `https://farelyudapratama.github.io/T-PWEB/`
+Repository ini sudah dilengkapi dengan GitHub Actions untuk otomatis deploy ke GitHub Pages. Setelah diaktifkan, halaman landing page statis akan tersedia di `https://<username>.github.io/T-PWEB/` (ganti `<username>` dengan username GitHub Anda)
 
 **Catatan:** GitHub Pages hanya bisa menampilkan file statis (HTML, CSS, JS). Aplikasi PHP ini membutuhkan server lokal dengan PHP dan MySQL untuk berjalan sepenuhnya.
 
