@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-PWEB - Notes App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .features {
+            list-style: none;
+        }
+
+        .features li {
+            padding: 10px 0;
+            color: #555;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .features li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .setup-steps {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .setup-steps ol {
+            padding-left: 20px;
+        }
+
+        .setup-steps li {
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-badge {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning p {
+            color: #856404;
+            margin: 0;
+        }
+
+        .github-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .github-link:hover {
+            background: #764ba2;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 T-PWEB Notes App</h1>
+        <p class="subtitle">Tugas Kuliah Pemrograman Web</p>
+
+        <div class="warning">
+            <p><strong>⚠️ Catatan Penting:</strong> Ini adalah aplikasi PHP dengan database MySQL yang tidak dapat berjalan langsung di GitHub Pages. GitHub Pages hanya mendukung file statis (HTML, CSS, JS). Untuk menjalankan aplikasi ini, Anda perlu mengatur server lokal dengan PHP dan MySQL.</p>
+        </div>
+
+        <div class="section">
+            <h2>📋 Tentang Proyek</h2>
+            <p>Sebuah aplikasi web sederhana untuk membuat catatan (notes) dengan fitur CRUD (Create, Read, Update, Delete). Aplikasi ini dibangun menggunakan PHP dan MySQL sebagai tugas kuliah pemrograman web.</p>
+        </div>
+
+        <div class="section">
+            <h2>✨ Fitur</h2>
+            <ul class="features">
+                <li>Sistem login dan registrasi pengguna</li>
+                <li>Membuat catatan baru</li>
+                <li>Menampilkan semua catatan pengguna</li>
+                <li>Mengedit catatan yang sudah ada</li>
+                <li>Menghapus catatan</li>
+                <li>Pencarian catatan real-time</li>
+                <li>Password hashing untuk keamanan</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🛠️ Teknologi yang Digunakan</h2>
+            <div class="tech-stack">
+                <span class="tech-badge">PHP</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS3</span>
+                <span class="tech-badge">JavaScript</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Cara Menjalankan</h2>
+            <div class="setup-steps">
+                <ol>
+                    <li>Clone repository ini:
+                        <br><code>git clone https://github.com/farelyudapratama/T-PWEB.git</code>
+                    </li>
+                    <li>Install XAMPP atau server lokal lain yang mendukung PHP dan MySQL</li>
+                    <li>Pindahkan folder project ke direktori htdocs (untuk XAMPP)</li>
+                    <li>Buat database MySQL dengan nama <code>notes-1</code></li>
+                    <li>Buat tabel <code>users</code> dengan kolom:
+                        <br>- <code>id</code> (INT, AUTO_INCREMENT, PRIMARY KEY)
+                        <br>- <code>username</code> (VARCHAR)
+                        <br>- <code>password</code> (VARCHAR)
+                    </li>
+                    <li>Buat tabel <code>notes</code> dengan kolom:
+                        <br>- <code>sno</code> (INT, AUTO_INCREMENT, PRIMARY KEY)
+                        <br>- <code>user_id</code> (INT)
+                        <br>- <code>title</code> (VARCHAR)
+                        <br>- <code>description</code> (TEXT)
+                    </li>
+                    <li>Jalankan Apache dan MySQL di XAMPP</li>
+                    <li>Akses aplikasi melalui <code>http://localhost/T-PWEB/</code></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📂 Struktur File</h2>
+            <ul class="features">
+                <li><code>index.php</code> - Halaman utama untuk menampilkan dan menambah catatan</li>
+                <li><code>login.php</code> - Halaman login</li>
+                <li><code>signup.php</code> - Halaman registrasi</li>
+                <li><code>db.php</code> - Konfigurasi koneksi database</li>
+                <li><code>edit.php</code> - Modal untuk mengedit catatan</li>
+                <li><code>delete.php, deleteNote.php, deleteUser.php</code> - Handler untuk menghapus data</li>
+                <li><code>style.css, loginAndSingup.css</code> - Styling</li>
+                <li><code>script.js</code> - JavaScript untuk interaktivitas</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔒 Keamanan</h2>
+            <p>Saat ini aplikasi menggunakan <code>password_hash()</code> untuk hashing password. Untuk versi production, disarankan untuk menambahkan:</p>
+            <ul class="features">
+                <li>Prepared statements untuk mencegah SQL Injection</li>
+                <li>CSRF protection</li>
+                <li>Input validation yang lebih ketat</li>
+                <li>HTTPS untuk koneksi aman</li>
+            </ul>
+        </div>
+
+        <a href="https://github.com/farelyudapratama/T-PWEB" class="github-link">
+            🔗 Lihat di GitHub
+        </a>
+    </div>
+</body>
+</html>
